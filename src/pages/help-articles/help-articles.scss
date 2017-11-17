@@ -1,0 +1,39 @@
+page-help-articles {
+  h1, h2 {
+    font-weight: 400;
+  }
+  h2, h3 {
+    font-size: 1.25em;
+  }
+  li, p {
+    font-size: 0.95em;
+  }
+  h1 {
+    font-size: 1.5em;
+  }
+  img {
+    position: relative;
+    top: 0.3em;
+  }
+}
+
+.md {
+  page-help-articles {
+    .bar-button, .toolbar-title {
+      color: #FFFFFF;
+    }
+    .fixed-content, .item .item-block {
+      background: #FFFFFF;
+    }
+    .item-block .item-inner .list {
+      border-width: 0;
+      border-bottom: 0;
+    }
+    .popover-content {
+      background: none;
+    }
+    .toolbar-background {
+      background: #161B1F;
+    }
+  }
+}

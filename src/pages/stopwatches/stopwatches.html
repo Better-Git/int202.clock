@@ -1,0 +1,15 @@
+<ion-content padding>
+  <div class="display" (click)="countStartStop()">
+    <span class="daughter">{{daughter}}</span>
+    <span class="son">{{son}}</span>
+  </div>
+  <ion-fab center bottom (click)="countStartStop()">
+    <button ion-fab color="primary">
+      <ion-icon *ngIf="!isClicked" name="play"></ion-icon>
+      <ion-icon *ngIf="isClicked" name="pause"></ion-icon>
+    </button>
+  </ion-fab>
+  <button ion-button clear class="reset" [color]="platform.is('ios') ? 'primary' : 'light'" *ngIf="!isFirstTime" (click)="reset()">
+    Reset
+  </button>
+</ion-content>

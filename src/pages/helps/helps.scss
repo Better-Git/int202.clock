@@ -1,0 +1,26 @@
+page-helps {
+  .default {
+    color: #488AFF;
+  }
+}
+
+.md {
+  page-helps {
+    .bar-button, .toolbar-title {
+      color: #FFFFFF;
+    }
+    .fixed-content, .item .item-block {
+      background: #FFFFFF;
+    }
+    .searchbar-input, .toolbar-background {
+      background: #161B1F;
+    }
+    .item-block .item-inner .list {
+      border-width: 0;
+      border-bottom: 0;
+    }
+    .popover-content {
+      background: none;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+page-alarming {
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .text {
+    font-size: 1.5em;
+    padding-top: 3.5px;
+  }
+  .time {
+    font-size: 5.5em;
+    font-weight: 300;
+  }
+  #verc {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.ios {
+  page-alarming {
+    .text, .time {
+      color: #000000;
+    }
+  }
+}
+
+.md {
+  page-alarming {
+    .text, .time {
+      color: #FFFFFF;
+    }
+  }
+}

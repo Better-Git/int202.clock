@@ -1,0 +1,8 @@
+<ion-tabs no-border>
+  <ion-tab [root]="tab1Root" tabTitle="ALARM" tabIcon="alarm"
+  tabsHideOnSubPages="true"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="CLOCK" tabIcon="time"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="TIMER" tabIcon="timer"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="STOPWATCH" tabIcon="stopwatch"></ion-tab>
+  <ion-tab (ionSelect)="optionPopover($event)" tabIcon="more"></ion-tab>
+</ion-tabs>

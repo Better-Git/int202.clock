@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title *ngIf="!isClicked">Help</ion-title>
+    <ion-searchbar #search *ngIf="isClicked" (ionInput)="type($event.target.value)"
+    (ionCancel)="cancel()" (ionClear)="cancel()"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-left *ngIf="isClicked && isEmpty" (click)="na()">
+        <ion-icon name="mic"></ion-icon>
+      </button>
+      <button ion-button icon-left *ngIf="!isClicked" (click)="search()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+      <button ion-button icon-left (click)="helpPopover($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      Popular
+    </ion-list-header>
+    <ion-item *ngFor="let list of lists" (click)="forward(list)" detail-push>
+      <ion-icon *ngIf="list.number != null" name="list-box" color="primary" item-start></ion-icon>
+      <ion-icon *ngIf="list.number == null" item-start><i class="material-icons default">announcement</i>
+      </ion-icon>
+      {{list.title}}
+    </ion-item>
+  </ion-list>
+</ion-content>

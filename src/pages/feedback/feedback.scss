@@ -1,0 +1,39 @@
+page-feedback {
+  a, p {
+    display: inline;
+  }
+  a {
+    text-decoration: none;
+  }
+  .card {
+    box-shadow: none;
+  }
+  .item-block {
+    width: 94%
+  }
+  .select {
+    max-width: 100%;
+    padding-left: 0;
+  }
+}
+
+.md {
+  page-feedback {
+    .bar-button, .toolbar-title {
+      color: #FFFFFF;
+    }
+    .fixed-content, .item .item-block {
+      background: #FFFFFF;
+    }
+    .item-block .item-inner .list {
+      border-width: 0;
+      border-bottom: 0;
+    }
+    .text-input {
+      margin-left: 0;
+    }
+    .toolbar-background {
+      background-color: #161B1F;
+    }
+  }
+}

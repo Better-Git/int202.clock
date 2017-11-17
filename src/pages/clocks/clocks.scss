@@ -1,0 +1,39 @@
+page-clocks {
+  h1 {
+    font-size: 5.5em;
+    font-weight: 300;
+  }
+  h3 {
+    font-size: 100%;
+  }
+  .daughter {
+    position: relative;
+    top: 10%;
+    transform: translateY(-50%);
+  }
+  .son {
+    position: relative;
+    top: 1%;
+    left: 35%;
+    transform: translateY(-50%);
+  }
+}
+
+.md {
+  page-clocks {
+    h1, h3 {
+      color: #FFFFFF;
+    }
+    .daughter {
+      left: 2%;
+    }
+  }
+}
+
+.ios {
+  page-clocks {
+    .daughter {
+      left: 0;
+    }
+  }
+}

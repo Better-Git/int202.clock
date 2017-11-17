@@ -1,0 +1,31 @@
+page-stopwatches {
+  .daughter {
+    font-size: 5.5em;
+    font-weight: 300;
+  }
+  .display {
+    margin:0 -50% 0 -50%;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    top: 35%;
+    left: 50%;
+  }
+  .reset {
+    position: absolute;
+    top: 88.5%;
+    left: 10%;
+  }
+  .son {
+    font-size: 2.25em;
+    font-weight: 400;
+  }
+}
+
+.md {
+  page-stopwatches {
+    .daughter, .son {
+      color: #FFFFFF;
+    }
+  }
+}

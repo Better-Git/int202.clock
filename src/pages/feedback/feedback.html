@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Feedback</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-left type="submit" form="feedback">
+        <ion-icon name="send"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <form id="feedback" [formGroup]="submitForm" (ngSubmit)="send()">
+      <ion-item>
+        <ion-select interface="popover">
+          <ion-option *ngIf="platform.is('android')" selected>
+            From: &nbsp;Google user</ion-option>
+          <ion-option *ngIf="platform.is('ios')" selected>
+            From: &nbsp;Apple user</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-input #input placeholder="Write your feedback" formControlName="feedback"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item text-wrap>
+        <p>Go to the </p><a href="https://support.google.com/legal/answer/3110420/">Legal Help page</a><p> to request content changes for legal reasons. Your <a (click)="showSystem()">system info</a> will be collected. See <a href="https://www.google.com/intl/en/policies/privacy/">privacy policy</a> and <a href="https://www.google.com/intl/en/policies/terms/">terms of service.</a>
+      </ion-item>
+    </form>
+  </ion-card>
+</ion-content>

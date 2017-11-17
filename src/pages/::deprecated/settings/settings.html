@@ -1,0 +1,123 @@
+<ion-header>
+  <ion-navbar primary>
+    <ion-title>Settings</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-left (click)="settingPopover($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      Clock
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Style</ion-label>
+      <ion-select interface="popover">
+        <ion-option value="digital" selected>Digital</ion-option>
+        <ion-option value="analog">Analog</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Display time with seconds</ion-label>
+      <ion-toggle value="seconds"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Automatic home clock
+        <p text-wrap>While traveling in an area where the time is
+        different, add a clock for home</p>
+      </ion-label>
+      <ion-toggle value="auto-home"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Home time zone</ion-label>
+      <ion-select>
+        <ion-option value="city">(GMT+6:00) City_Name</ion-option>
+        <ion-option value="bangkok" selected>(GMT+7:00) Bangkok</ion-option>
+        <ion-option value="city">(GMT+8:00) City_Name</ion-option>
+        <ion-option value="city">(GMT+9:00) City_Name</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item (click)="openDate()">Change date & time</ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-list-header>
+      Alarms
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Silence after</ion-label>
+      <ion-select>
+        <ion-option value="1">1 minute</ion-option>
+        <ion-option *ngFor="let int of ints" [value]="int"
+        [selected]="int == '10'">{{int}} minutes</ion-option>
+        <ion-option value="infinite">Never</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Snooze length</ion-label>
+      <ion-select>
+        <ion-option value="1">1 minute</ion-option>
+        <ion-option *ngFor="let num of nums" [value]="num"
+        [selected]="num == '10'">{{num}} minutes</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Alarm volume</ion-label>
+      <ion-range value="loudness">
+        <ion-icon range-left name="alarm"></ion-icon>
+      </ion-range>
+    </ion-item>
+    <ion-item>
+      <ion-label>Gradually increase volume</ion-label>
+      <ion-select>
+        <ion-option value="0" selected>Off</ion-option>
+        <ion-option *ngFor="let sec of secs" [value]="sec">{{sec}} seconds
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Volume buttons</ion-label>
+      <ion-select interface="popover">
+        <ion-option value="dismiss" selected>Dismiss</ion-option>
+        <ion-option value="snooze">Snooze</ion-option>
+        <ion-option value="control">Control volume</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Start week on</ion-label>
+      <ion-select interface="popover">
+        <ion-option *ngFor="let day of days" [value]="day"
+        [selected]="day == 'Sunday'">{{day}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-list-header>
+      Timers
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Timer sounds</ion-label>
+      <ion-select>
+        <ion-option value="none">Silent</ion-option>
+        <ion-option value="expired" selected>Timer Expired</ion-option>
+        <ion-option value="argon">Argon</ion-option>
+        <ion-option value="barium">Barium</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Gradually increase volume</ion-label>
+      <ion-select>
+        <ion-option value="0" selected>Off</ion-option>
+        <ion-option *ngFor="let sec of secs" [value]="sec">{{sec}} seconds
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Timer vibrate</ion-label>
+      <ion-toggle value="vibrate"></ion-toggle>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,16 @@
+page-popover-settings {
+  .item-block .item-inner .list {
+    border-width: 0;
+    border-bottom: 0;
+  }
+  .list-ios > .item-block:first-child {
+    border-top: 0;
+  }
+  .item-md {
+    color: #FFFFFF;
+    background: #303030;
+  }
+  .list {
+    margin: 0;
+  }
+}

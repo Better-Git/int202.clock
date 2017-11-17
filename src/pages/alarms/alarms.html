@@ -1,0 +1,31 @@
+<ion-content padding>
+  <ion-list *ngIf="isAdded">
+    <ion-item *ngFor="let alarm of alarms" class="clear">
+      <ion-label [color]="platform.is('ios') ? 'dark' : 'light'">
+        <span class="time" (click)="editAlarm(alarm)">
+          {{alarm.time}}<br>
+        </span>
+        <button ion-button icon-left clear class="delete"
+        [color]="platform.is('ios') ? 'dark' : 'light'"
+        (click)="deleteAlarm(alarm)">
+          <ion-icon name="trash"></ion-icon>
+          <span class="delText">&nbsp;&nbsp;&nbsp;Delete</span>
+        </button>
+      </ion-label>
+      <ion-toggle [checked]="alarm.status" (ionChange)="switchAlarm($event, alarm)">
+      </ion-toggle>
+    </ion-item>
+  </ion-list>
+
+  <div id="verc" *ngIf="!isAdded">
+    <div class="center icon">
+      <i class="material-icons alarm-icon">alarm_off</i>
+    </div>
+    <div class="center text">No Alarms</div>
+  </div>
+  <ion-fab center bottom (click)="addAlarm()">
+    <button ion-fab color="primary">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

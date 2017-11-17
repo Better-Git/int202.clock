@@ -1,0 +1,11 @@
+<ion-content padding>
+  <div id="verc">
+    <h1 class="center time">{{time}}</h1>
+    <h2 class="center text">Alarm</h2>
+  </div>
+  <ion-fab center bottom (click)="stopAlarm()">
+    <button ion-fab [color]="platform.is('ios') ? 'primary' : 'light'">
+      <i class="material-icons">alarm_off</i>
+    </button>
+  </ion-fab>
+</ion-content>

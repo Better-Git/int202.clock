@@ -1,0 +1,46 @@
+page-settings {
+  p {
+    padding-top: 0.3em;
+  }
+  .list-ios .item-block .item-inner, .list-md .item-block .item-inner {
+    border-width: 0;
+    border-bottom: 0;
+  }
+  .list-ios .item-block {
+    border-bottom: 1px solid $list-ios-border-color;
+  }
+  .list-md .item-block {
+    border-bottom: 1px solid #393E40;
+    border-top: 0;
+  }
+}
+
+.md {
+  page-settings {
+    p {
+      color: #C1C1C1;
+    }
+    .bar-button, .item, .label, .toolbar-title {
+      color: #FFFFFF;
+    }
+    .item, .toolbar-background {
+      background: #161B1F;
+    }
+    .list-header .label {
+      color: #327EFF;
+      font-weight: 800;
+    }
+    .radio-md .radio-inner {
+      background: #212121;
+    }
+    .header::after {
+      display: none;
+    }
+    .list-header {
+      border-top: 0;
+    }
+    .select-icon {
+      visibility: hidden;
+    }
+  }
+}

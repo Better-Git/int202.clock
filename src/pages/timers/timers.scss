@@ -1,0 +1,73 @@
+page-timers {
+  .row, .col {
+    text-align: center;
+  }
+  .daughter, .son {
+    font-size: 5.5em;
+    font-weight: 300;
+  }
+  .col {
+    background: transparent;
+    font-size: 2.5em;
+    font-weight: 300;
+    margin: 5px;
+    padding: 6%;
+  }
+  .delete {
+    position: absolute;
+    top: 88.5%;
+    left: 10%;
+  }
+  .display {
+    margin: 0 -50% 0 -50%;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    top: 35%;
+    left: 50%;
+  }
+  .label {
+    font-weight: 400;
+  }
+  .main-wrap {
+    max-width: 100%;
+    margin: auto
+  }
+  .reset {
+    position: absolute;
+    top: 88.5%;
+    left: 65%;
+  }
+  .son {
+    color: color($colors, primary);
+  }
+  .tiny {
+    font-size: 0.55em;
+  }
+}
+
+.ios {
+  page-timers {
+    .col {
+      padding: 7%;
+    }
+    .label {
+      font-size: 2.48em;
+    }
+  }
+}
+
+.md {
+  page-timers {
+    .daughter {
+      color: #FFFFFF;
+    }
+    .col {
+      color: #ffffff;
+    }
+    .label {
+      color: #ffffff;
+      font-size: 3.125em;
+    }
+  }
+}

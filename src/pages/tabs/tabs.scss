@@ -1,0 +1,28 @@
+@mixin label {
+  color: #C1C1C1;
+  background: #161B1F;
+}
+
+@mixin white {
+  color: #fff !important;
+}
+
+page-tabs {
+  .tabs-md .tab-button {
+    @include label;
+    font-weight: 500;
+  }
+  .tabs-md .tab-button[aria-selected=true] {
+    @include white;
+  }
+  .tabs-md .tab-button[aria-selected=true] .tab-button-icon {
+    @include white;
+  }
+  .tabs-md .tab-button-icon {
+    @include label;
+  }
+  .tabs-md .tabbar {
+    @include label;
+    border-bottom: 1px #393E40 solid;
+  }
+}
