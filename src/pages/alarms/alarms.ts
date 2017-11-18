@@ -44,6 +44,12 @@ export class AlarmsPage {
     });
     this.time = this.provider.getTime().substr(0,5);
     this.checkAlarm();
+    this.platform.pause.subscribe(() => {
+      this.checkAlarm();
+    });
+    this.platform.resume.subscribe(() => {
+      this.checkAlarm();
+    });
   }
 
   addAlarm() {

@@ -26,6 +26,10 @@ export class ClockDataProvider {
 
   getCountdown() {
     this.ts--;
+    if (this.tm > 0 && this.ts < 0) {
+      this.tm -= 1;
+      this.ts = 59;
+    }
     switch (true) {
       case this.th > 0 && this.tm < 60 && this.tm >= 10 &&
         this.ts < 60 && this.ts >= 10:
@@ -64,6 +68,8 @@ export class ClockDataProvider {
       case this.tm > 0 && this.ts == 0:
         this.ts += 60;
         return (this.tm--).toString() + ':00';
+      case this.ts == 60:
+        return '59';
       case this.ts < 60 && this.ts > 0:
         return (this.ts).toString();
       case this.th == 0 && this.tm == 0 && this.ts <= 0:
@@ -75,30 +81,35 @@ export class ClockDataProvider {
     return this.date;
   }
 
-  getMilliseconds() {
-    // if (this.ms >= 100) {
+  getMillisecond() {
+    // if (this.ms >= 97.5) {
     //   this.ms = 0;
     //   this.s++;
+    //   return '00';
     // }
-    // if (this.ms < 10) {
-    //   return '0' + (this.ms++).toString();
+    // if (this.ms < 7.5) {
+    //   this.ms += 2.5;
+    //   return '0' + (Math.floor(this.ms)).toString();
     // } else {
-    //   return (this.ms++).toString();
+    //   this.ms += 2.5;
+    //   return (Math.floor(this.ms)).toString();
     // }
 
     switch (true) {
-      case this.ms >= 100:
+      case this.ms >= 97.5:
         this.ms = 0;
         this.s++;
-        break;
-      case this.ms >= 10 && this.ms < 100:
-        return (this.ms++).toString();
-      case this.ms < 10:
-        return '0' + (this.ms++).toString();
+        return '00';
+      case this.ms >= 7.5 && this.ms < 97.5:
+        this.ms += 2.5;
+        return (Math.floor(this.ms)).toString();
+      case this.ms < 7.5:
+        this.ms += 2.5;
+        return '0' + (Math.floor(this.ms)).toString();
     }
   }
 
-  getSeconds() {
+  getSecond() {
     // if (this.s >= 60) {
     //   this.s = 0;
     //   this.m++;
@@ -135,13 +146,15 @@ export class ClockDataProvider {
     // }
 
     switch (true) {
-      case this.h > 0 && this.m >= 10 && this.s >= 10:
-        return (this.h).toString() + ':' + (this.m).toString() + ':' +
-          (this.s).toString();
-      case this.h > 0 && this.m >= 10 && this.s < 10:
-        return (this.h).toString() + ':' + (this.m).toString() + ':0' +
+      case this.h > 0 && this.m < 60 && this.m >= 10 &&
+        this.s < 60 && this.s >= 10:
+          return (this.h).toString() + ':' + (this.m).toString() + ':' +
             (this.s).toString();
-      case this.h > 0 && this.m < 10 && this.s >= 10:
+      case this.h > 0 && this.m < 60 && this.m >= 10 &&
+        this.s < 10:
+          return (this.h).toString() + ':' + (this.m).toString() + ':0' +
+            (this.s).toString();
+      case this.h > 0 && this.m < 10 && this.s < 60 && this.s >= 10:
         return (this.h).toString() + ':0' + (this.m).toString() + ':' +
           (this.s).toString();
       case this.h > 0 && this.m < 10 && this.s < 10:
@@ -151,10 +164,10 @@ export class ClockDataProvider {
         this.m = 0;
         this.h++;
         break;
+      case this.m > 0 && this.s < 60 && this.s >= 10:
+        return (this.m).toString() + ':' + (this.s).toString();
       case this.m > 0 && this.s < 10:
         return (this.m).toString() + ':0' + (this.s).toString();
-      case this.m > 0:
-        return (this.m).toString() + ':' + (this.s).toString();
       case this.s >= 60:
         this.s = 0;
         this.m++;
@@ -168,15 +181,12 @@ export class ClockDataProvider {
     return this.time = new Date().toTimeString().split(" ")[0];
   }
 
-  getTS() {
+  getTimerSecond() {
     return this.ts;
   }
 
-  reset() {
-    this.ms = 0;
-    this.s = 0;
-    this.m = 0;
-    this.h = 0;
+  getTimerMinute() {
+    return this.tm;
   }
 
   resetCountDown(hours, minutes, seconds) {
@@ -208,6 +218,19 @@ export class ClockDataProvider {
       case !hl && !ml && sm:
         return s;
     }
+  }
+
+  resetStopwatch() {
+    this.ms = 0;
+    this.s = 0;
+    this.m = 0;
+    this.h = 0;
+  }
+
+  resetTimer() {
+    this.ts = 0;
+    this.tm = 0;
+    this.th = 0;
   }
 
   setCountdown(hours, minutes, seconds) {

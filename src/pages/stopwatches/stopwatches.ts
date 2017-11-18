@@ -18,13 +18,17 @@ export class StopwatchesPage {
   private subscription;
   private isClicked: boolean = false;
   private isFirstTime: boolean = true;
-  private daughter: string = '0';
-  private son: string = '00';
+  private daughter: string;
+  private son: string;
   count: number = 0;
 
   constructor(public platform: Platform,
               public provider: ClockDataProvider) {
     this.platform = platform;
+    if (this.count == 0) {
+      this.daughter = '0';
+      this.son = '00';
+    }
   }
 
   countStartStop() {
@@ -34,9 +38,9 @@ export class StopwatchesPage {
     }
     this.count++;
     if (this.isClicked) {
-      this.subscription = Observable.interval(9.999999999995).subscribe(x => {
-        this.daughter = this.provider.getSeconds();
-        this.son = this.provider.getMilliseconds();
+      this.subscription = Observable.interval(10).subscribe(x => {
+        this.daughter = this.provider.getSecond();
+        this.son = this.provider.getMillisecond();
       });
     } else {
       this.subscription.unsubscribe();
@@ -50,7 +54,7 @@ export class StopwatchesPage {
     this.daughter = '0';
     this.son = '00';
     this.subscription.unsubscribe();
-    this.provider.reset();
+    this.provider.resetStopwatch();
   }
 
   ionViewDidLoad() {

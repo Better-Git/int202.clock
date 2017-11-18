@@ -28,7 +28,7 @@ export class AlarmingPage {
               public vibration: Vibration,
               public viewCtrl: ViewController) {
     this.time = this.navParams.get('time');
-    for (var i = 0; i < 100; i++) {
+    for (var i = 0; i < 1000; i++) {
       if (i % 2 == 0) {
         this.num.push(1000);
         this.num.push(1000);
@@ -53,6 +53,7 @@ export class AlarmingPage {
     this.androidFullScreen.isImmersiveModeSupported()
       .then(() => this.androidFullScreen.immersiveMode())
       .catch((error: any) => console.log(error));
+    this.platform.registerBackButtonAction(() => {}, 101);
     console.log('ionViewDidLoad AlarmingPage');
   }
 

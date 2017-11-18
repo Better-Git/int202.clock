@@ -24,6 +24,7 @@ export class TimersPage {
   private isVibrated: boolean = false; 
   private daughter: string = '0';
   private mt: string = '';
+  private num: number[] = [];
   count: number = 0;
   enter: number = 0;
   nums: number[] = [];
@@ -33,10 +34,19 @@ export class TimersPage {
               public platform: Platform,
               public vibration: Vibration) {
     this.platform = platform;
-    for (var i = 1; i < 10; i++) {
+    for (let i = 1; i < 10; i++) {
       this.nums.push(i);
     }
     this.nums.push(0);
+    for (let i = 0; i < 500; i++) {
+      if (i % 2 == 0) {
+        this.num.push(1000);
+        this.num.push(1000);
+      } else if (Math.abs(i % 2) == 1) {
+        this.num.push(0);
+        this.num.push(0);
+      }
+    }
   }
 
   add(num) {
@@ -77,9 +87,13 @@ export class TimersPage {
   }
 
   addMinute() {
-    let m = parseInt(this.m) + 1;
-    this.provider.setCountdown(this.h, m, this.provider.getTS() - 1);
-    this.m = m.toString();
+    this.isVibrated = false;
+    let m = this.provider.getTimerMinute();
+    m += 1;
+    this.daughter = this.provider.resetCountDown(this.h, m,
+      this.provider.getTimerSecond() - 1);
+    this.provider.setCountdown(this.h, m, this.provider.getTimerSecond() - 1);
+    this.vibration.vibrate(0);
   }
 
   countStartStop() {
@@ -96,7 +110,7 @@ export class TimersPage {
         this.daughter = this.provider.getCountdown();
         if (this.daughter == 'DONE') {
           this.daughter = '0';
-          this.vibration.vibrate(Number.MAX_SAFE_INTEGER);
+          this.vibration.vibrate(this.num);
           this.isVibrated = true;
         }
       });
@@ -115,6 +129,7 @@ export class TimersPage {
     this.isEntered = false;
     this.isFirstClick = true;
     this.isFirstTime = true;
+    this.isVibrated = false;
     this.count = 0;
     this.enter = 0;
     this.daughter = '0';
@@ -123,7 +138,8 @@ export class TimersPage {
     this.m = '00';
     this.s = '00';
     this.subscription.unsubscribe();
-    this.provider.reset();
+    this.provider.resetTimer();
+    this.vibration.vibrate(0);
   }
 
   remove() {
